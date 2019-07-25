@@ -50,3 +50,19 @@ textarea.form-control.form-control-sm {
     display: inline;
     margin: 0px 2.5px;
 }
+
+#editbutton {
+    position: absolute;
+    bottom: 15px;
+    right: 40px;
+}
+
+#deletebutton {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+div.tags-group.nopadding {
+    padding: 0px;
+}

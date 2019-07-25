@@ -16,17 +16,26 @@ let app = new Vue({
                 alertify.error("Title cannot be empty.");
                 return;
             }
-            this.bookmarks = this.bookmarks.concat({
-                title: this.addDropdownTitleInput,
-                description: this.addDropdownDescriptionInput,
-                tags: Array.from(this.addedTags),
-                time: new Date(),
-                hidden: false
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.executeScript(
+                    tabs[0].id,
+                    {code: 'document.documentElement.scrollTop'},
+                    (results) => {
+                        app.bookmarks = app.bookmarks.concat({
+                            title: app.addDropdownTitleInput,
+                            description: app.addDropdownDescriptionInput,
+                            tags: Array.from(app.addedTags),
+                            time: new Date(),
+                            hidden: false,
+                            position: results[0]
+                        });
+                        app.addDropdownTitleInput = "";
+                        app.addDropdownDescriptionInput = "";
+                        app.addDropdownTagInput = "";
+                        app.addedTags = new Set();
+                    }
+                );
             });
-            this.addDropdownTitleInput = "";
-            this.addDropdownDescriptionInput = "";
-            this.addDropdownTagInput = "";
-            this.addedTags = new Set();
         },
         addTag: function () {
             if (this.addDropdownTagInput !== "") {
@@ -43,11 +52,12 @@ let app = new Vue({
                     description: bookmark.description,
                     tags: bookmark.tags,
                     time: bookmark.time,
+                    position: bookmark.position,
                     hidden:
                         !((bookmark.title.indexOf(this.searchInput) > -1 ||
-                        bookmark.description.indexOf(this.searchInput) > -1 ||
-                        this.searchInput === "") &&
-                        bookmark.tags.filter(tag => this.tagValidities[tag]).length > 0)
+                            bookmark.description.indexOf(this.searchInput) > -1 ||
+                            this.searchInput === "") &&
+                            bookmark.tags.filter(tag => this.tagValidities[tag]).length > 0)
                 }
             });
         },
@@ -58,6 +68,14 @@ let app = new Vue({
             } else {
                 $("#btn-" + tag).removeClass("not-selected");
             }
+        },
+        scrollTo: function (position) {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.executeScript(
+                    tabs[0].id,
+                    {code: 'window.scrollTo(' + position + ', 0);'}
+                );
+            });
         }
     }
 });

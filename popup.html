@@ -61,7 +61,8 @@
                             </div>
                             <div class="tags-group" v-if="allTags.size > 0">
                                 <div class="badge-wrapper" v-for="tag in Array.from(allTags)">
-                                    <button v-bind:id="'btn-' + tag" type="button" class="btn badge badge-secondary" v-on:click="toggle(tag); filterBookmarks()">
+                                    <button v-bind:id="'btn-' + tag" type="button" class="btn badge badge-secondary"
+                                        v-on:click="toggle(tag); filterBookmarks()">
                                         {{ tag }}
                                     </button>
                                 </div>
@@ -89,7 +90,7 @@
             </div>
             <div class="list-group" v-if="bookmarks.length > 0">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
-                    v-for="bookmark in bookmarks" v-if="!bookmark.hidden">
+                    v-for="bookmark in bookmarks" v-if="!bookmark.hidden" v-on:click="scrollTo(bookmark.position)">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ bookmark.title }}</h5>
                         <small class="text-muted">{{ bookmark.time.toLocaleString() }}</small>

@@ -80,3 +80,7 @@ div.tags-group.nopadding {
 .list-group {
     width: 100%;
 }
+
+.not-selected {
+    background-color: lightgray;
+}

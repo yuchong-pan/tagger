@@ -7,7 +7,8 @@ let app = new Vue({
         addDropdownTagInput: "",
         bookmarks: [],
         allTags: new Set(),
-        searchInput: ""
+        searchInput: "",
+        tagValidities: {}
     },
     methods: {
         addBookmark: function () {
@@ -31,6 +32,7 @@ let app = new Vue({
             if (this.addDropdownTagInput !== "") {
                 this.addedTags.add(this.addDropdownTagInput);
                 this.allTags.add(this.addDropdownTagInput);
+                this.tagValidities[this.addDropdownTagInput] = true;
                 this.addDropdownTagInput = "";
             }
         },
@@ -42,11 +44,20 @@ let app = new Vue({
                     tags: bookmark.tags,
                     time: bookmark.time,
                     hidden:
-                        bookmark.title.indexOf(this.searchInput) == -1 &&
-                        bookmark.description.indexOf(this.searchInput) == -1 &&
-                        this.searchInput !== ""
+                        !((bookmark.title.indexOf(this.searchInput) > -1 ||
+                        bookmark.description.indexOf(this.searchInput) > -1 ||
+                        this.searchInput === "") &&
+                        bookmark.tags.filter(tag => this.tagValidities[tag]).length > 0)
                 }
             });
+        },
+        toggle: function (tag) {
+            this.tagValidities[tag] = !this.tagValidities[tag];
+            if (!this.tagValidities[tag]) {
+                $("#btn-" + tag).addClass("not-selected");
+            } else {
+                $("#btn-" + tag).removeClass("not-selected");
+            }
         }
     }
 });

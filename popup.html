@@ -61,7 +61,7 @@
                             </div>
                             <div class="tags-group" v-if="allTags.size > 0">
                                 <div class="badge-wrapper" v-for="tag in Array.from(allTags)">
-                                    <button type="button" class="btn badge badge-secondary">
+                                    <button v-bind:id="'btn-' + tag" type="button" class="btn badge badge-secondary" v-on:click="toggle(tag); filterBookmarks()">
                                         {{ tag }}
                                     </button>
                                 </div>

@@ -3,9 +3,10 @@ let app = new Vue({
     data: {
         addDropdownTitleInput: "",
         addDropdownDescriptionInput: "",
-        addedTags: [],
+        addedTags: new Set(),
         addDropdownTagInput: "",
-        bookmarks: []
+        bookmarks: [],
+        allTags: new Set()
     },
     methods: {
         addBookmark: function () {
@@ -16,17 +17,18 @@ let app = new Vue({
             this.bookmarks = this.bookmarks.concat({
                 title: this.addDropdownTitleInput,
                 description: this.addDropdownDescriptionInput,
-                tags: this.addedTags,
+                tags: Array.from(this.addedTags),
                 time: new Date()
             });
             this.addDropdownTitleInput = "";
             this.addDropdownDescriptionInput = "";
             this.addDropdownTagInput = "";
-            this.addedTags = [];
+            this.addedTags = new Set();
         },
         addTag: function () {
             if (this.addDropdownTagInput !== "") {
-                this.addedTags = this.addedTags.concat(this.addDropdownTagInput);
+                this.addedTags.add(this.addDropdownTagInput);
+                this.allTags.add(this.addDropdownTagInput);
                 this.addDropdownTagInput = "";
             }
         }

@@ -58,13 +58,12 @@
                                     <i class="fas fa-search"></i>
                                 </span>
                             </div>
-                            <div class="tags-group">
-                                <button type="button" class="btn badge badge-secondary">test</button>
-                                <button type="button" class="btn badge badge-secondary">dynamic scoping</button>
-                                <button type="button" class="btn badge badge-secondary">LISP</button>
-                                <button type="button" class="btn badge badge-secondary">functional</button>
-                                <button type="button" class="btn badge badge-secondary">blockchain</button>
-                                <button type="button" class="btn badge badge-secondary">gradual typing</button>
+                            <div class="tags-group" v-if="allTags.size > 0">
+                                <div class="badge-wrapper" v-for="tag in Array.from(allTags)">
+                                    <button type="button" class="btn badge badge-secondary">
+                                        {{ tag }}
+                                    </button>
+                                </div>
                             </div>
                             <div class="form-check this-wesite-only-check">
                                 <input type="checkbox" class="form-check-input" id="thisWebsiteOnlyCheck">
@@ -95,6 +94,7 @@
                         <small class="text-muted">{{ bookmark.time.toLocaleString() }}</small>
                     </div>
                     <p class="mb-1 description">{{ bookmark.description }}</p>
+                    <br />
                     <div v-if="bookmark.tags.length === 0">
                         <div class="badge-wrapper">
                             <span> </span>

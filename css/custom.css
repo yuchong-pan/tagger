@@ -10,7 +10,7 @@
 
 .list-group {
     max-height: 500px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 form .form-control.form-control-sm, form .btn.btn-sm, form .input-group {
@@ -40,6 +40,11 @@ textarea.form-control.form-control-sm {
 
 .this-wesite-only-check {
     padding: 0px 25px;
+    margin-left: 2.5px;
+}
+
+.this-wesite-only-check input.form-check-input {
+    margin-top: 7.5px;
 }
 
 .hide {
@@ -65,6 +70,7 @@ textarea.form-control.form-control-sm {
 
 div.tags-group.nopadding {
     padding: 0px;
+    width: 85%;
 }
 
 .list-group-item .description {

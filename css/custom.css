@@ -51,13 +51,13 @@ textarea.form-control.form-control-sm {
     margin: 0px 2.5px;
 }
 
-#editbutton {
+.editButton {
     position: absolute;
     bottom: 15px;
     right: 40px;
 }
 
-#deletebutton {
+.deleteButton {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -65,4 +65,12 @@ textarea.form-control.form-control-sm {
 
 div.tags-group.nopadding {
     padding: 0px;
+}
+
+.list-group-item .description {
+    word-break: break-all;
+}
+
+.list-group {
+    width: 100%;
 }

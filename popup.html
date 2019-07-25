@@ -82,50 +82,33 @@
             </div>
         </div>
         <div class="row">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div v-if="bookmarks.length === 0">
+                <div class="alert alert-light" role="alert">
+                    There are no bookmarks saved in this web browser.
+                </div>
+            </div>
+            <div class="list-group" v-if="bookmarks.length > 0">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
+                    v-for="bookmark in bookmarks">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-muted">3 days ago</small>
+                        <h5 class="mb-1">{{ bookmark.title }}</h5>
+                        <small class="text-muted">{{ bookmark.time.toLocaleString() }}</small>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
-                        varius blandit.</p>
-                    <div class="tags-group nopadding">
-                        <button type="button" class="btn badge badge-secondary">test</button>
-                        <button type="button" class="btn badge badge-secondary">dynamic scoping</button></div>
-                    <!-- <i class="material-icons" id="addbutton">&#xE03B;</i> -->
-                    <i class="material-icons" id="editbutton">&#xE254;</i>
-                    <i class="material-icons" id="deletebutton">&#xE872;</i>
-
-
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-muted">3 days ago</small>
+                    <p class="mb-1 description">{{ bookmark.description }}</p>
+                    <div v-if="bookmark.tags.length === 0">
+                        <div class="badge-wrapper">
+                            <span> </span>
+                        </div>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
-                        varius blandit.</p>
-                    <div class="tags-group nopadding">
-                        <button type="button" class="btn badge badge-secondary">test</button>
-                        <button type="button" class="btn badge badge-secondary">dynamic scoping</button></div>
-                    <!-- <i class="material-icons" id="addbutton">&#xE03B;</i> -->
-                    <i class="material-icons" id="editbutton">&#xE254;</i>
-                    <i class="material-icons" id="deletebutton">&#xE872;</i>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small class="text-muted">3 days ago</small>
+                    <div class="tags-group nopadding" v-if="bookmark.tags.length > 0">
+                        <div class="badge-wrapper" v-for="tag in bookmark.tags">
+                            <button type="button" class="btn badge badge-secondary">
+                                {{ tag }}
+                            </button>
+                        </div>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
-                        varius blandit.</p>
-                    <div class="tags-group nopadding">
-                        <button type="button" class="btn badge badge-secondary">test</button>
-                        <button type="button" class="btn badge badge-secondary">dynamic scoping</button></div>
-                    <!-- <i class="material-icons" id="addbutton">&#xE03B;</i> -->
-                    <i class="material-icons" id="editbutton">&#xE254;</i>
-                    <i class="material-icons" id="deletebutton">&#xE872;</i>
+                    <i class="material-icons editButton">&#xE254;</i>
+                    <i class="material-icons deleteButton">&#xE872;</i>
                 </a>
             </div>
         </div>

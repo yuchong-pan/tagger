@@ -8,7 +8,7 @@ let app = new Vue({
         bookmarks: []
     },
     methods: {
-        addBookmark: function() {
+        addBookmark: function () {
             if (this.addDropdownTitleInput === "") {
                 alertify.error("Title cannot be empty.");
                 return;
@@ -24,9 +24,11 @@ let app = new Vue({
             this.addDropdownTagInput = "";
             this.addedTags = [];
         },
-        addTag: function() {
-            this.addedTags = this.addedTags.concat(this.addDropdownTagInput);
-            this.addDropdownTagInput = "";
+        addTag: function () {
+            if (this.addDropdownTagInput !== "") {
+                this.addedTags = this.addedTags.concat(this.addDropdownTagInput);
+                this.addDropdownTagInput = "";
+            }
         }
     }
 });

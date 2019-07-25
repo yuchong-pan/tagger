@@ -41,3 +41,19 @@ textarea.form-control.form-control-sm {
 .this-wesite-only-check {
     padding: 0px 25px;
 }
+
+#editbutton{
+    position: absolute;
+    bottom: 15px;
+    right: 40px;
+}
+
+#deletebutton{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+div.tags-group.nopadding{
+    padding: 0px;
+}

@@ -53,7 +53,8 @@
                     <div class="dropdown-menu" aria-labelledby="addButton">
                         <form>
                             <div class="search-group">
-                                <input type="text" class="form-control form-control-sm" id="searchInput">
+                                <input type="text" class="form-control form-control-sm" id="searchInput"
+                                    v-model="searchInput" v-on:input="filterBookmarks">
                                 <span>
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -88,7 +89,7 @@
             </div>
             <div class="list-group" v-if="bookmarks.length > 0">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
-                    v-for="bookmark in bookmarks">
+                    v-for="bookmark in bookmarks" v-if="!bookmark.hidden">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{ bookmark.title }}</h5>
                         <small class="text-muted">{{ bookmark.time.toLocaleString() }}</small>

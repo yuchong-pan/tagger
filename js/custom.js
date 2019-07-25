@@ -6,7 +6,8 @@ let app = new Vue({
         addedTags: new Set(),
         addDropdownTagInput: "",
         bookmarks: [],
-        allTags: new Set()
+        allTags: new Set(),
+        searchInput: ""
     },
     methods: {
         addBookmark: function () {
@@ -18,7 +19,8 @@ let app = new Vue({
                 title: this.addDropdownTitleInput,
                 description: this.addDropdownDescriptionInput,
                 tags: Array.from(this.addedTags),
-                time: new Date()
+                time: new Date(),
+                hidden: false
             });
             this.addDropdownTitleInput = "";
             this.addDropdownDescriptionInput = "";
@@ -31,6 +33,20 @@ let app = new Vue({
                 this.allTags.add(this.addDropdownTagInput);
                 this.addDropdownTagInput = "";
             }
+        },
+        filterBookmarks: function () {
+            this.bookmarks = this.bookmarks.map(bookmark => {
+                return {
+                    title: bookmark.title,
+                    description: bookmark.description,
+                    tags: bookmark.tags,
+                    time: bookmark.time,
+                    hidden:
+                        bookmark.title.indexOf(this.searchInput) == -1 &&
+                        bookmark.description.indexOf(this.searchInput) == -1 &&
+                        this.searchInput !== ""
+                }
+            });
         }
     }
 });

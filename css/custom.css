@@ -1,0 +1,43 @@
+.main {
+    width: 400px;
+    font-family: "Verdana";
+    padding: 20px;
+}
+
+.not-last {
+    margin-bottom: 20px;
+}
+
+.list-group {
+    max-height: 500px;
+    overflow: scroll;
+}
+
+form .form-control.form-control-sm, form .btn.btn-sm, form .input-group {
+    margin: 5px;
+    width: -webkit-fill-available;
+}
+
+textarea.form-control.form-control-sm {
+    resize: none;
+}
+
+.search-group {
+    position: relative;
+}
+
+.search-group span {
+    opacity: 0.3;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tags-group {
+    padding: 5px;
+}
+
+.this-wesite-only-check {
+    padding: 0px 25px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="libs/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/fontawesome-free-5.9.0-web/css/all.min.css" rel="stylesheet">
+
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container main">
+        <div class="row not-last">
+            <div class="col-2 text-center">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary" id="addButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="addButton">
+                        <form>
+                            <input type="text" class="form-control form-control-sm" id="titleInput"
+                                placeholder="Enter Title">
+                            <textarea type="text" class="form-control form-control-sm" id="descriptionInput" rows="3"
+                                placeholder="Add an optional extended description..."></textarea>
+                            <input type="text" class="form-control form-control-sm" id="tagsInput"
+                                placeholder="Enter Tags">
+                            <button type="button" class="btn btn-light btn-sm" id="addButton2">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 text-center">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-info" id="filterButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="addButton">
+                        <form>
+                            <div class="search-group">
+                                <input type="text" class="form-control form-control-sm" id="searchInput">
+                                <span>
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <div class="tags-group">
+                                <button type="button" class="btn badge badge-secondary">test</button>
+                                <button type="button" class="btn badge badge-secondary">dynamic scoping</button>
+                                <button type="button" class="btn badge badge-secondary">LISP</button>
+                                <button type="button" class="btn badge badge-secondary">functional</button>
+                                <button type="button" class="btn badge badge-secondary">blockchain</button>
+                                <button type="button" class="btn badge badge-secondary">gradual typing</button>
+                            </div>
+                            <div class="form-check this-wesite-only-check">
+                                <input type="checkbox" class="form-check-input" id="thisWebsiteOnlyCheck">
+                                <label class="form-check-label small" for="thisWebsiteOnlyCheck">This website only</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 text-center">
+                <button type="button" class="btn btn-dark">
+                    <i class="fab fa-github"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                        varius blandit.</p>
+                    <small>Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                        varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                        varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery-3.4.1/js/jquery-3.4.1.min.js"></script>
+    <script src="libs/popper.js-1.15.0/umd/popper.min.js"></script>
+    <script src="libs/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

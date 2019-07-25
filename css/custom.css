@@ -41,3 +41,12 @@ textarea.form-control.form-control-sm {
 .this-wesite-only-check {
     padding: 0px 25px;
 }
+
+.hide {
+    display: none;
+}
+
+.badge-wrapper {
+    display: inline;
+    margin: 0px 2.5px;
+}

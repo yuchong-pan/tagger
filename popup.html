@@ -4,12 +4,14 @@
 <head>
     <link href="libs/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="libs/fontawesome-free-5.9.0-web/css/all.min.css" rel="stylesheet">
+    <link href="libs/alertify-1.11.4/css/alertify.min.css" rel="stylesheet">
+    <link href="libs/alertify-1.11.4/css/themes/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container main">
+    <div class="container main" id="app">
         <div class="row not-last">
             <div class="col-2 text-center">
                 <div class="dropdown">
@@ -20,12 +22,20 @@
                     <div class="dropdown-menu" aria-labelledby="addButton">
                         <form>
                             <input type="text" class="form-control form-control-sm" id="titleInput"
-                                placeholder="Enter Title">
+                                placeholder="Enter Title" v-model="addDropdownTitleInput">
                             <textarea type="text" class="form-control form-control-sm" id="descriptionInput" rows="3"
-                                placeholder="Add an optional extended description..."></textarea>
+                                placeholder="Add an optional extended description..."
+                                v-model="addDropdownDescriptionInput"></textarea>
                             <input type="text" class="form-control form-control-sm" id="tagsInput"
-                                placeholder="Enter Tags">
-                            <button type="button" class="btn btn-light btn-sm" id="addButton2">
+                                placeholder="Enter Tags" v-model="addDropdownTagInput" v-on:keyup.enter="addTag">
+                            <div class="tags-group">
+                                <div class="badge-wrapper" v-for="tag in addedTags">
+                                    <button type="button" class="btn badge badge-secondary">
+                                        {{ tag }} <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-light btn-sm" id="addButton2" v-on:click="addBookmark">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </form>
@@ -56,7 +66,8 @@
                             </div>
                             <div class="form-check this-wesite-only-check">
                                 <input type="checkbox" class="form-check-input" id="thisWebsiteOnlyCheck">
-                                <label class="form-check-label small" for="thisWebsiteOnlyCheck">This website only</label>
+                                <label class="form-check-label small" for="thisWebsiteOnlyCheck">This website
+                                    only</label>
                             </div>
                         </form>
                     </div>
@@ -104,6 +115,10 @@
     <script src="libs/jquery-3.4.1/js/jquery-3.4.1.min.js"></script>
     <script src="libs/popper.js-1.15.0/umd/popper.min.js"></script>
     <script src="libs/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script src="libs/alertify-1.11.4/alertify.min.js"></script>
+    <script src="libs/vuejs-2.6.10/js/vue.min.js"></script>
+
+    <script src="js/custom.js"></script>
 </body>
 
 </html>
